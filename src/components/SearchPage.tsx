@@ -32,7 +32,12 @@ const SearchPage = () => {
                 ? locations.map((location) => {
                   return (
                     <div key={location.id} >
-                        { location.name }
+                        <p>
+                          { location.name }
+                        </p>
+                        <p>
+                          { location.id }
+                        </p>
                       </div>
                     );
                   })
