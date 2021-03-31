@@ -11,7 +11,7 @@ export const getLocations = (searchTerm: string): Promise<Location[]> => {
     });
 };
 
-export const getLocationDetails = (locationID: number): Promise<LocationDetails> => {
+export const getLocationDetails = (locationID: string): Promise<LocationDetails> => {
   return fetch(`${BASE_URL}/${locationID}`)
     .then((res) => (res.status <= 400 ? res : Promise.reject(res)))
     .then((res) => res.json())
