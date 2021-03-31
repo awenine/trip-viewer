@@ -1,4 +1,5 @@
 import React,{ useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { getLocations } from "../services/APIClient";
 import { Location } from "../types"
 import SearchBar from './SearchBar';
@@ -32,13 +33,15 @@ const SearchPage = () => {
                 ? locations.map((location) => {
                   return (
                     <div key={location.id} >
+                      <Link to={`/locations/${location.id}`}>
                         <p>
                           { location.name }
                         </p>
                         <p>
                           { location.id }
                         </p>
-                      </div>
+                      </Link>
+                    </div>
                     );
                   })
                   : "Loading locations..."} 

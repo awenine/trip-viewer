@@ -1,6 +1,3 @@
-import React,{ useEffect, useState } from "react";
-import { getLocations } from "./services/APIClient";
-import { Location, LocationDetails } from "./types"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 import SearchPage from "./components/SearchPage";
@@ -14,7 +11,7 @@ function App() {
         Navigation goes here
       </h2>
       <Switch>
-        <Route exact path="/search"> 
+        <Route exact path="/"> 
           <SearchPage />
         </Route>
         <Route exact path="/locations/:id" component={DetailsPage}>
