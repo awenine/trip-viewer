@@ -4,6 +4,7 @@ import { Location, LocationDetails } from "./types"
 import SearchBar from "./components/SearchBar";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
+import SearchPage from "./components/SearchPage";
 
 function App() {
   const [locations, setLocations] = useState<Location[]> ([]);
@@ -30,17 +31,8 @@ function App() {
         Navigation goes here
       </h2>
       <Switch>
-        <Route path="/search">
-          <SearchBar handleChange={handleSearchChange} content={searchTerm} />
-            {locations
-                ? locations.map((location) => {
-                  return (
-                    <div key={location.id} >
-                        { location.name }
-                      </div>
-                    );
-                  })
-                  : "Loading locations..."} 
+        <Route exact path="/search">
+          <SearchPage />
         </Route>
       </Switch>
     </Router>
