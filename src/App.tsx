@@ -16,8 +16,8 @@ function App() {
   }
 
   useEffect(() => {
-    loadLocations('lon')
-  }, []);
+    loadLocations(searchTerm)
+  }, [searchTerm]);
 
   function handleSearchChange(text: string): void {
     setSearchTerm(text);
