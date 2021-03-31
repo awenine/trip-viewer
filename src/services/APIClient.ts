@@ -2,7 +2,7 @@ import { Location, LocationDetails } from "../types"
 
 const BASE_URL = process.env.REACT_APP_FETCH_URL;
 
-export const getLocations = (searchTerm: string): Promise<Location> => {
+export const getLocations = (searchTerm: string): Promise<Location[]> => {
   return fetch(`${BASE_URL}?q=${searchTerm}`)
     .then((res) => (res.status <= 400 ? res : Promise.reject(res)))
     .then((res) => res.json())
@@ -19,5 +19,3 @@ export const getLocationDetails = (locationID: number): Promise<LocationDetails>
       console.log(`${err.message} while fetching location with id ${locationID}`);
     });
 };
-
-// export {}
