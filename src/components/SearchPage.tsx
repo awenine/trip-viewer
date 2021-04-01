@@ -1,8 +1,9 @@
-import React,{ useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getLocations } from "../services/APIClient";
 import { Location } from "../types"
 import SearchBar from './SearchBar';
+import { throttle } from "throttle-debounce";
 
 // export interface SearchPageProps {
   
@@ -19,8 +20,10 @@ const SearchPage = () => {
       });
   }
 
+  const throttledLoadLocations = useCallback(throttle(750, false, loadLocations),[])
+
   useEffect(() => {
-    loadLocations(searchTerm)
+    throttledLoadLocations(searchTerm)
   }, [searchTerm]);
 
   function handleSearchChange(text: string): void {
