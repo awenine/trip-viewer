@@ -4,6 +4,7 @@ import { getLocations } from "../services/APIClient";
 import { Location } from "../types"
 import SearchBar from './SearchBar';
 import { throttle } from "throttle-debounce";
+import LocationCard from "./LocationCard";
 
 // export interface SearchPageProps {
   
@@ -32,22 +33,13 @@ const SearchPage = () => {
   return ( 
     <div>
       <SearchBar handleChange={handleSearchChange} content={searchTerm} />
-            {locations
-                ? locations.map((location) => {
-                  return (
-                    <div key={location.id} >
-                      <Link to={`/locations/${location.id}`}>
-                        <p>
-                          { location.name }
-                        </p>
-                        <p>
-                          { location.id }
-                        </p>
-                      </Link>
-                    </div>
-                    );
-                  })
-                  : "Loading locations..."} 
+      {locations
+          ? locations.map((location) => {
+            return (
+              <LocationCard key={location.id} locationName={location.name} locationId={location.id} />
+              );
+            })
+            : "Loading locations..."} 
     </div>
    );
 }

@@ -20,9 +20,9 @@ const DetailsPage = ({ match }: DetailsPageProps) => {
   //! when manually inputing a route with incorrect ID, throws error
   //TODO implement error handling for this case
   function loadLocationDetails(locationID: string) {
-    getLocationDetails(locationID).then((fetchedDetails) => {
-      setLocationDetails(fetchedDetails);
-    });
+    getLocationDetails(locationID)
+      .then((fetchedDetails) => {
+        setLocationDetails(fetchedDetails)});
   }
 
   useEffect(() => {
