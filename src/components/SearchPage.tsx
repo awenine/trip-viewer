@@ -1,5 +1,7 @@
+/** @jsxImportSource @emotion/react */
+
+import { jsx, css } from '@emotion/react';
 import { useCallback, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { getLocations } from "../services/APIClient";
 import { Location } from "../types"
 import SearchBar from './SearchBar';
@@ -33,13 +35,19 @@ const SearchPage = () => {
   return ( 
     <div>
       <SearchBar handleChange={handleSearchChange} content={searchTerm} />
+      <div id="locations-container"
+          css={css`
+            width: 88vw;
+            display: flex;
+          `}>
       {locations
           ? locations.map((location) => {
             return (
               <LocationCard key={location.id} locationName={location.name} locationId={location.id} />
               );
             })
-            : "Loading locations..."} 
+            : "Loading locations..."}
+      </div> 
     </div>
    );
 }
