@@ -11,19 +11,37 @@ export interface LocationCardProps {
  
 const LocationCard: React.FC<LocationCardProps> = ({ locationName, locationId }) => {
   return ( 
-    <Link to={`/locations/${locationId}`}>
+    <Link 
+      to={`/locations/${locationId}`}
+      css={css`
+        &:link, &:hover, &:visited, &:active {
+          text-decoration: none;
+        }
+      `}>
       <div
         css={css`
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          text-decoration: none;
           width: 200px;
           height: 200px;
-          padding: 10px;
-          margin: 5px;
-          background-color: #bce9b3;
-          color: #1b8565;
+          padding: 20px;
+          margin: 10px;
+          border-radius: 4px;
+          background-color: #c3eed8;
+          color: #2c9163;
+          font-family: 'Roboto', sans-serif;
           font-size: 14px;
+          transition: box-shadow 500ms, background-color 500ms, span 500ms;
           &:hover {
-            color: ${'red'};
-            background-color: #93be8a;
+            background-color: #e9ffd0;
+            box-shadow: 2px 2px 4px #225522;
+            span {
+              color: #008d07;
+              background-color#9add8dbb;
+            }
           }
         `}>
         <div 
@@ -33,12 +51,28 @@ const LocationCard: React.FC<LocationCardProps> = ({ locationName, locationId })
             height: 100px;
             padding: 10px;
             margin-top: 5px;
-            background-color: #7fd0e9;
-            color: #2b3270;
+            background-color: #b5f1fe;
+            text-decoration: none;
+            color: #a7a9b8;
+            border: 2px solid #95c0dd;
             font-size: 14px;
-            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
           `}>Location Image</div>
         <h3>{locationName}</h3>
+        <span
+          css={css`
+            color: #c3eed8;
+            background-color: #c3eed8;
+            border-radius: 2px;
+            padding: 4px 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          `}>
+          Find out more
+        </span>
       </div>
     </Link>
    );

@@ -37,7 +37,7 @@ const SearchPage = () => {
       <SearchBar handleChange={handleSearchChange} content={searchTerm} />
       <div id="locations-container"
           css={css`
-            width: 88vw;
+            width: 95%;
             display: flex;
           `}>
       {locations

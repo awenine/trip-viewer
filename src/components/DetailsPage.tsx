@@ -1,6 +1,8 @@
-// import "./DetailsPage.css";
+/** @jsxImportSource @emotion/react */
+
+import { jsx, css } from '@emotion/react';
 import { useState, useEffect } from "react";
-import { Link, RouteComponentProps, withRouter } from "react-router-dom";
+import { RouteComponentProps, withRouter } from "react-router-dom";
 import { getLocationDetails } from "../services/APIClient";
 import { LocationDetails } from "../types";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
@@ -17,8 +19,7 @@ const DetailsPage = ({ match }: DetailsPageProps) => {
     latitude: 0,
     longitude: 0,
   });
-  //! when manually inputing a route with incorrect ID, throws error
-  //TODO implement error handling for this case
+  
   function loadLocationDetails(locationID: string) {
     getLocationDetails(locationID)
       .then((fetchedDetails) => {
@@ -30,31 +31,46 @@ const DetailsPage = ({ match }: DetailsPageProps) => {
   }, []);
 
   return (
-    <div>
-      <p>Details: ID = {match.params.id}</p>
+    <div 
+    css={css`
+      margin: 1vw;
+      padding: 2vw;
+      width: 800px;
+      display: flex;
+      justify-content: space-between;
+      background-color: #dbdbc5;
+    `}>
       <p>
-        {locationDetails.name}
-        <br />
-        {locationDetails.latitude}
-        <br />
-        {locationDetails.longitude}
+        <h2>{locationDetails.name}</h2>
+        Latitude: {locationDetails.latitude} <br /> 
+        Longitude: {locationDetails.longitude}
       </p>
       {
         locationDetails.latitude !== 0 && locationDetails.longitude !== 0 ?
-        <MapContainer style={{height: "480px", width: "500px"}} center={[locationDetails.latitude, locationDetails.longitude]} zoom={8} scrollWheelZoom={true}>
+        <MapContainer 
+          css={css`
+            width: 500px;
+            height: 480px;
+            margin: 10px;
+            box-shadow: 2px 2px 4px #3a3728;
+          `}
+          center={[locationDetails.latitude, locationDetails.longitude]} 
+          zoom={8} 
+          scrollWheelZoom={true}>
           <TileLayer
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
           <Marker position={[locationDetails.latitude, locationDetails.longitude]}>
             <Popup>
-              A pretty CSS3 popup. <br /> Easily customizable.
+              {locationDetails.name}
+              <br /> Latitude: {locationDetails.latitude}
+              <br /> Longitude: {locationDetails.longitude}
             </Popup>
           </Marker>
         </MapContainer> :
         null  
       }
-      <Link to="/">HOME</Link>
     </div>
   );
 };
