@@ -40,8 +40,8 @@ const LocationCard: React.FC<LocationCardProps> = ({ locationName, locationId })
             box-shadow: 2px 2px 4px #225522;
             span {
               color: #008d07;
-              background-color#9add8dbb;
-            }
+              background-color#9add8d;
+            };
           }
         `}>
         <div 

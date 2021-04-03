@@ -5,7 +5,9 @@ import { useState, useEffect } from "react";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 import { getLocationDetails } from "../services/APIClient";
 import { LocationDetails } from "../types";
+import L from "leaflet";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import mapMarker from '../assets/map-marker.svg';
 
 type DetailsPageParams = {
   id: string;
@@ -18,6 +20,13 @@ const DetailsPage = ({ match }: DetailsPageProps) => {
     id: 0,
     latitude: 0,
     longitude: 0,
+  });
+
+  const mapIcon = L.icon({
+    iconUrl: mapMarker,
+    iconSize: [38, 38],
+    iconAnchor: [22, 94],
+    popupAnchor: [-3, -76]
   });
   
   function loadLocationDetails(locationID: string) {
@@ -38,7 +47,7 @@ const DetailsPage = ({ match }: DetailsPageProps) => {
       width: 800px;
       display: flex;
       justify-content: space-between;
-      background-color: #dbdbc5;
+      background-color: #dbd2c5;
     `}>
       <p>
         <h2>{locationDetails.name}</h2>
@@ -53,7 +62,7 @@ const DetailsPage = ({ match }: DetailsPageProps) => {
             height: 480px;
             margin: 10px;
             box-shadow: 2px 2px 4px #3a3728;
-          `}
+          `} 
           center={[locationDetails.latitude, locationDetails.longitude]} 
           zoom={8} 
           scrollWheelZoom={true}>
@@ -61,7 +70,7 @@ const DetailsPage = ({ match }: DetailsPageProps) => {
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
-          <Marker position={[locationDetails.latitude, locationDetails.longitude]}>
+          <Marker position={[locationDetails.latitude, locationDetails.longitude]} icon={mapIcon}>
             <Popup>
               {locationDetails.name}
               <br /> Latitude: {locationDetails.latitude}
