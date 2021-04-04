@@ -1,6 +1,8 @@
 # Trip Viewer
 
 A basic app for searching a location API and displaying map data for each location.
+A deployed version of this app is available here:
+[Trip-Viewer](https://peaceful-shannon-4f0f9f.netlify.app/)
 
 ## Technology
 
