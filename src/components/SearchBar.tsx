@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 
-import { jsx, css } from '@emotion/react';
+import { css } from '@emotion/react';
 import React from "react";
 
 type SearchBarProps = {
@@ -16,7 +16,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ handleChange, content }) => {
         margin: 15px;
         font-family: 'Roboto', sans-serif;
       `}>
-        Where to you want to visit?
+        Where do you want to visit?
       </h2>
       <form>
         <label htmlFor="search">

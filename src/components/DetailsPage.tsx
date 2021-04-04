@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 
-import { jsx, css } from '@emotion/react';
+import { css } from '@emotion/react';
 import { useState, useEffect } from "react";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 import { getLocationDetails } from "../services/APIClient";
@@ -49,11 +49,12 @@ const DetailsPage = ({ match }: DetailsPageProps) => {
       justify-content: space-between;
       background-color: #dbd2c5;
     `}>
-      <p>
+      <div>
+        <h3>Location:</h3>
         <h2>{locationDetails.name}</h2>
         Latitude: {locationDetails.latitude} <br /> 
         Longitude: {locationDetails.longitude}
-      </p>
+      </div>
       {
         locationDetails.latitude !== 0 && locationDetails.longitude !== 0 ?
         <MapContainer 

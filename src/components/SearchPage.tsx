@@ -1,18 +1,15 @@
 /** @jsxImportSource @emotion/react */
 
-import { jsx, css } from '@emotion/react';
+import { css } from '@emotion/react';
 import { useCallback, useEffect, useState } from "react";
 import { getLocations } from "../services/APIClient";
 import { Location } from "../types"
 import SearchBar from './SearchBar';
 import { throttle } from "throttle-debounce";
 import LocationCard from "./LocationCard";
-
-// export interface SearchPageProps {
-  
-// }
+import { EmotionJSX } from '@emotion/react/types/jsx-namespace';
  
-const SearchPage = () => {
+const SearchPage = ():EmotionJSX.Element => {
   const [locations, setLocations] = useState<Location[]> ([]);
   const [searchTerm, setSearchTerm] = useState("");
 

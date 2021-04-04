@@ -1,11 +1,12 @@
 /** @jsxImportSource @emotion/react */
 
-import { jsx, css } from '@emotion/react';
+import { css } from '@emotion/react';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import SearchPage from "./components/SearchPage";
 import DetailsPage from "./components/DetailsPage";
+import { EmotionJSX } from '@emotion/react/types/jsx-namespace';
 
-function App() {
+function App():EmotionJSX.Element {
 
   return (
     <Router>
@@ -29,7 +30,6 @@ function App() {
             text-decoration: none;
             &:hover {
               color: #52c792;
-            }
             }
           `}>HOME</Link>
         </h2>

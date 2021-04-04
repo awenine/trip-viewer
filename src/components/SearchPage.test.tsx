@@ -4,14 +4,14 @@ import userEvent from '@testing-library/user-event'
 import { createMemoryHistory } from 'history'
 import { Router } from 'react-router-dom'
 import '@testing-library/jest-dom/extend-expect'
-import App from "./App";
+import SearchPage from "./SearchPage";
 
-test('full app rendering within router', () => {
+test('Search Page renders search bar', () => {
   const history = createMemoryHistory()
   render(
     <Router history={history}>
-      <App />
+      <SearchPage />
     </Router>
   )
-  expect(screen.getByText(/home/i)).toBeInTheDocument()
+  expect(screen.getByRole("textbox")).toBeInTheDocument()
 })

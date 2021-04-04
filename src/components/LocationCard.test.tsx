@@ -4,14 +4,14 @@ import userEvent from '@testing-library/user-event'
 import { createMemoryHistory } from 'history'
 import { Router } from 'react-router-dom'
 import '@testing-library/jest-dom/extend-expect'
-import App from "./App";
+import LocationCard from "./LocationCard";
 
-test('full app rendering within router', () => {
+test('Location Card rendering with place name in Router', () => {
   const history = createMemoryHistory()
   render(
     <Router history={history}>
-      <App />
+      <LocationCard locationName={'Testable Placename'} locationId={1234} />
     </Router>
   )
-  expect(screen.getByText(/home/i)).toBeInTheDocument()
+  expect(screen.getByText(/Testable Placename/i)).toBeInTheDocument()
 })
