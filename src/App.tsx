@@ -33,6 +33,13 @@ function App():EmotionJSX.Element {
             }
           `}>HOME</Link>
         </h2>
+        <h1
+          css={css`
+            padding: 20px;
+            color: #1eaef1;
+          `}>TRIP VIEWER
+        </h1>
+        <div></div>
       </div>
       <Switch>
         <Route exact path="/"> 
